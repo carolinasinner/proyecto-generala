@@ -1,0 +1,329 @@
+asd
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+	<title>Contador trucos</title>
+</head>
+<body>
+	<div id="primer_pantalla">
+		<div class="principal">
+			<div class="equipo">
+				<h1><input type="text" id="nequipo1" name="equipo1" value="Equipo 1" required></h1>
+				<h1><input type="text" id="nequipo2" name="equipo2" value="Equipo 2" required></h1>
+			</div>
+			<div class="puntos">
+				<h1>a 24</h1>
+				<h1>a 30</h1>
+			</div>
+			<div class="iniciar">
+				<button href="#juego" id="btn_iniciar">Iniciar</button>
+			</div>
+		</div>		
+	</div>
+
+	
+	<div class="contenedor" id="contenedor">
+		<div class="juego">			
+				<div>
+					<button id="sumae1">+</button>				
+					<button id="restae1">-</button>					
+				</div>				
+				<input type="text" name="equipo1" id="equipo1" value="Equipo 1" readonly >	
+			
+		
+			<div >				
+				<button id="sumae2">+</button>				
+				<button id="restae2">-</button>					
+			</div>
+				<input type="text" name="equipo1" id="equipo2" value="Equipo1" readonly class="n1">
+		</div>
+		<div class="cont">
+		<div class="contador">
+			<img src="" id="imagen" width="40" height="40"><!-- aca muestro el 
+			fosforo-->
+			<img src="" id="imagen2" width="40" height="40">
+			<img src="" id="imagen3" width="40" height="40"> 
+			<img src="" id="imagen4" width="40" height="40">
+			<img src="" id="imagen5" width="40" height="40">
+			<img src="" id="imagen6" width="40" height="40">
+
+		</div>
+		<div class="contador2">
+			<img src="" id="imag" width="40" height="40"><!-- aca muestro el 
+			fosforo-->
+			<img src="" id="imag2" width="40" height="40">
+			<img src="" id="imag3" width="40" height="40"> 
+			<img src="" id="imag4" width="40" height="40">
+			<img src="" id="imag5" width="40" height="40">
+			<img src="" id="imag6" width="40" height="40">
+
+			</div>
+		 </div>
+		<div class="total">
+			<div><p>Total <input type="text" id="total1" name=""></p></div>
+			<div><p>Total <input type="text" id="total2" name=""></p></div>
+		</div>
+		<button id="btn_volver">VOLVER</button>
+	</div>
+		
+		
+	
+
+</body>
+</html>
+
+<script type="text/javascript">
+	var contador =0;
+	var contador2=0;
+	$('document').ready(function(){
+		$("#imagen").hide();
+		$("#imagen2").hide();
+		$("#imagen3").hide();
+		$("#imagen4").hide();
+		$("#imagen5").hide();
+		$("#imagen6").hide();
+
+		$("#imag").hide();
+		$("#imag2").hide();
+		$("#imag3").hide();
+		$("#imag4").hide();
+		$("#imag5").hide();
+		$("#imag6").hide();
+		$('#contenedor').hide();
+	})
+	$('#btn_volver').click(function(){
+		$('#primer_pantalla').show();
+		$('#contenedor').hide();
+
+	})
+
+
+
+	$('#btn_iniciar').click(function(){
+		$('#primer_pantalla').hide();
+		$('#contenedor').show();
+		$('#equipo1').val($('#nequipo1').val());
+		$('#equipo2').val($('#nequipo2').val());
+
+	})
+
+	$('#sumae1').click(function(){
+		contador = contador+1;			
+		sumar(contador,$('#nequipo1').val());
+		$('#total1').val(contador);
+	})
+
+	$('#sumae2').click(function(){
+		contador2 = contador2+1;			
+		sumar2(contador2,$('#nequipo2').val());
+		$('#total2').val(contador2);
+	})
+
+	$('#restae1').click(function(){
+		contador = contador-1;			
+		sumar(contador,$('#nequipo1').val());
+		$('#total1').val(contador);
+	})
+	$('#restae2').click(function(){
+		contador2 = contador2-1;			
+		sumar2(contador2,$('#nequipo2').val());
+		$('#total2').val(contador2);
+	})
+
+
+
+	
+
+	function sumar2(c,equipo){
+			if (c<=5){
+		$("#imag").show();
+		$("#imag2").hide();
+		$("#imag3").hide();
+		$("#imag4").hide();
+		$("#imag5").hide();
+		$("#imag6").hide();
+		var src1 = 'imagenes/'+c+'.png';
+		$("#imag").attr("src", src1);
+		}
+
+		if (c>5){
+		$("#imag").show();
+		$("#imag2").show();
+		$("#imag3").hide();
+		$("#imag4").hide();
+		$("#imag5").hide();
+		$("#imag6").hide();
+		url = c-5;
+		$("#imag").attr("src", 'imagenes/5.png');
+		var src1 = 'imagenes/'+url+'.png';
+		$("#imag2").attr("src", src1);
+		}
+
+		if (c>10){
+		$("#imag").show();
+		$("#imag2").show();
+		$("#imag3").show();
+		$("#imag4").hide();
+		$("#imag5").hide();
+		$("#imag6").hide();
+
+		url = c-10;
+		$("#imag").attr("src", 'imagenes/5.png');
+		$("#imag2").attr("src", 'imagenes/5.png');
+		var src1 = 'imagenes/'+url+'.png';
+		$("#imag3").attr("src", src1);
+		}
+
+		if (c>15){
+		$("#imag").show();
+		$("#imag2").show();
+		$("#imag3").show();
+		$("#imag4").show();
+		$("#imag5").hide();
+		$("#imag6").hide();
+		url = c-15;
+		$("#imag").attr("src", 'imagenes/5.png');
+		$("#imag2").attr("src", 'imagenes/5.png');
+		$("#imag3").attr("src", 'imagenes/5.png');
+		var src1 = 'imagenes/'+url+'.png';
+		$("#imag4").attr("src", src1);
+		}
+
+		if (c>20){
+		$("#imag").show();
+		$("#imag2").show();
+		$("#imag3").show();
+		$("#imag4").show();
+		$("#imag5").show();
+		$("#imag6").hide();
+		url = c-20;
+		$("#imag").attr("src", 'imagenes/5.png');
+		$("#imag2").attr("src", 'imagenes/5.png');
+		$("#imag3").attr("src", 'imagenes/5.png');
+		$("#imag4").attr("src", 'imagenes/5.png');
+		var src1 = 'imagenes/'+url+'.png';
+		$("#imag5").attr("src", src1);
+		}
+
+		if (c>25){
+		$("#imag").show();
+		$("#imag2").show();
+		$("#imag3").show();
+		$("#imag4").show();
+		$("#imag5").show();
+		$("#imag6").show();
+		url = c-25;
+		$("#imag").attr("src", 'imagenes/5.png');
+		$("#imag2").attr("src", 'imagenes/5.png');
+		$("#imag3").attr("src", 'imagenes/5.png');
+		$("#imag4").attr("src", 'imagenes/5.png');
+		$("#imag5").attr("src", 'imagenes/5.png');
+		var src1 = 'imagenes/'+url+'.png';
+		$("#imag6").attr("src", src1);
+		}
+		if (c==30) {			
+			alert("GANADOR:¡¡¡ "+equipo+' !!!');
+		}
+
+
+
+	}
+	function sumar(c,equipo){
+		if (c<=5){
+
+		$("#imagen").show();
+		$("#imagen2").hide();
+		$("#imagen3").hide();
+		$("#imagen4").hide();
+		$("#imagen5").hide();
+		$("#imagen6").hide();
+		var src1 = 'imagenes/'+c+'.png';
+		$("#imagen").attr("src", src1);
+		}
+
+		if (c>5){
+		$("#imagen").show();
+		$("#imagen2").show();
+		$("#imagen3").hide();
+		$("#imagen4").hide();
+		$("#imagen5").hide();
+		$("#imagen6").hide();
+		url = c-5;
+		$("#imagen").attr("src", 'imagenes/5.png');
+		var src1 = 'imagenes/'+url+'.png';
+		$("#imagen2").attr("src", src1);
+		}
+
+		if (c>10){
+		$("#imagen").show();
+		$("#imagen2").show();
+		$("#imagen3").show();
+		$("#imagen4").hide();
+		$("#imagen5").hide();
+		$("#imagen6").hide();
+
+		url = c-10;
+		$("#imagen").attr("src", 'imagenes/5.png');
+		$("#imagen2").attr("src", 'imagenes/5.png');
+		var src1 = 'imagenes/'+url+'.png';
+		$("#imagen3").attr("src", src1);
+		}
+
+		if (c>15){
+		$("#imagen").show();
+		$("#imagen2").show();
+		$("#imagen3").show();
+		$("#imagen4").show();
+		$("#imagen5").hide();
+		$("#imagen6").hide();
+		url = c-15;
+		$("#imagen").attr("src", 'imagenes/5.png');
+		$("#imagen2").attr("src", 'imagenes/5.png');
+		$("#imagen3").attr("src", 'imagenes/5.png');
+		var src1 = 'imagenes/'+url+'.png';
+		$("#imagen4").attr("src", src1);
+		}
+
+		if (c>20){
+		$("#imagen").show();
+		$("#imagen2").show();
+		$("#imagen3").show();
+		$("#imagen4").show();
+		$("#imagen5").show();
+		$("#imagen6").hide();
+		url = c-20;
+		$("#imagen").attr("src", 'imagenes/5.png');
+		$("#imagen2").attr("src", 'imagenes/5.png');
+		$("#imagen3").attr("src", 'imagenes/5.png');
+		$("#imagen4").attr("src", 'imagenes/5.png');
+		var src1 = 'imagenes/'+url+'.png';
+		$("#imagen5").attr("src", src1);
+		}
+
+		if (c>25){
+		$("#imagen").show();
+		$("#imagen2").show();
+		$("#imagen3").show();
+		$("#imagen4").show();
+		$("#imagen5").show();
+		$("#imagen6").show();
+		url = c-25;
+		$("#imagen").attr("src", 'imagenes/5.png');
+		$("#imagen2").attr("src", 'imagenes/5.png');
+		$("#imagen3").attr("src", 'imagenes/5.png');
+		$("#imagen4").attr("src", 'imagenes/5.png');
+		$("#imagen5").attr("src", 'imagenes/5.png');
+		var src1 = 'imagenes/'+url+'.png';
+		$("#imagen6").attr("src", src1);
+		}
+		if (c==30) {			
+			alert("GANADOR:¡¡¡ "+equipo+' !!!');
+		}
+
+	}
+</script>
